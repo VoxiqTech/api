@@ -54,49 +54,6 @@ curl http://localhost:8000/gfg/zerotologic
 }
 ```
 
-## Deployment on Vercel
-
-This project is configured for easy deployment on Vercel.
-
-### 1. Install Vercel CLI (Optional)
-If you prefer command line:
-```bash
-npm i -g vercel
-```
-
-### 2. Deploy
-Run the deploy command in the project folder:
-```bash
-vercel
-```
-Follow the prompts (accept defaults).
-
-### 3. Manual Deployment (Git Integration)
-1. Push this code to a GitHub repository.
-2. Log in to [Vercel](https://vercel.com).
-3. Click **"Add New..."** > **"Project"**.
-4. Import your GitHub repository.
-5. Vercel will automatically detect the Python configuration (via `vercel.json`) and deploy.
-
-### Configuration
-The included `vercel.json` handles the configuration:
-```json
-{
-  "builds": [
-    {
-      "src": "main.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "main.py"
-    }
-  ]
-}
-```
-
 ## Project Structure
 
 ```
@@ -114,6 +71,4 @@ gfg api/
 1. Verify the username is correct and public on GeeksforGeeks.
 2. Check if the profile URL is accessible in a browser.
 
-**Vercel Deployment Issues:**
-- Ensure `requirements.txt` is present and correct.
-- Check Vercel logs for build errors.
+
