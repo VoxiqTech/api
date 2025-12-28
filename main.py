@@ -1,11 +1,15 @@
 from fastapi import FastAPI, HTTPException
 from scraper import get_gfg_profile
+from middleware import AnalyticsMiddleware
 
 app = FastAPI(
     title="GFG Profile API",
     description="Fetch GeeksforGeeks user profile data from public profiles",
     version="2.0"
 )
+
+# Add analytics middleware to track requests and events
+app.add_middleware(AnalyticsMiddleware)
 
 @app.get("/")
 def home():

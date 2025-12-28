@@ -10,6 +10,7 @@ A fast, lightweight FastAPI service to fetch GeeksforGeeks user profile data fro
 - ✅ Extract scoring data, problem statistics, and more
 - ✅ Handles Next.js dynamic data structures
 - ✅ Ready for **Vercel Deployment**
+- ✅ Built-in **Vercel Web Analytics** support for tracking API usage
 
 ## Setup
 
@@ -58,12 +59,19 @@ curl http://localhost:8000/gfg/zerotologic
 
 ```
 gfg api/
-├── main.py              # FastAPI application
+├── main.py              # FastAPI application with analytics
 ├── scraper.py           # Scraping logic (Next.js support)
+├── analytics.py         # Server-side analytics tracking
+├── middleware.py        # Request tracking middleware
 ├── requirements.txt     # Dependencies
 ├── vercel.json          # Deployment config
+├── ANALYTICS.md         # Analytics documentation
 └── README.md           # Documentation
 ```
+
+## Analytics
+
+Vercel Web Analytics is pre-configured for tracking API usage and performance metrics. See [ANALYTICS.md](./ANALYTICS.md) for detailed setup and usage instructions.
 
 ## Troubleshooting
 
@@ -71,4 +79,7 @@ gfg api/
 1. Verify the username is correct and public on GeeksforGeeks.
 2. Check if the profile URL is accessible in a browser.
 
-
+**Analytics not working:**
+1. Ensure the app is deployed to Vercel
+2. Enable Web Analytics in your Vercel project settings
+3. See [ANALYTICS.md](./ANALYTICS.md) for more details
