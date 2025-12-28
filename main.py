@@ -35,3 +35,7 @@ def fetch_gfg_profile(username: str):
         )
 
     return data
+
+@app.get("/favicon.ico", include_in_schema=False)
+async def favicon():
+    return {}
