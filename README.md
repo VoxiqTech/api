@@ -1,74 +1,54 @@
-# GfG Profile API
+# GeeksforGeeks Profile API
 
-A fast, lightweight FastAPI service to fetch GeeksforGeeks user profile data from public profiles.
-
-**No Authentication Required** - all data is extracted from public profile pages!
+A fast, lightweight FastAPI service to extract user profile data from GeeksforGeeks, including detailed problem-solving statistics by difficulty.
 
 ## Features
-
-- ✅ Fetch profile data for any public GfG user
-- ✅ Extract scoring data, problem statistics, and more
-- ✅ Handles Next.js dynamic data structures
-- ✅ Ready for **Vercel Deployment**
+- **Hybrid Extraction**: Combines HTML scraping for profile stats with a direct API call for problem breakdown.
+- **Detailed Stats**: Fetches Coding Score, Total Problems Solved, Institute Rank, and Articles Published.
+- **Problem Breakdown**: Accurate counts for School, Basic, Easy, Medium, and Hard problems.
 
 ## Setup
 
-### 1. Install Dependencies
+### Prerequisites
+- Python 3.9+
 
-```bash
-pip install -r requirements.txt
-```
+### Installation
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### 2. Run Locally
-
+### Running Locally
+Start the server:
 ```bash
 python -m uvicorn main:app --reload
 ```
 
-The API will be available at `http://localhost:8000`
+## API Usage
 
-## API Endpoints
-
-### `GET /`
-Home endpoint showing API status.
-
-### `GET /gfg/{username}`
-Fetch GfG profile data.
+### Get Profile Data
+**Endpoint:** `GET /gfg/{username}`
 
 **Example:**
-```bash
-curl http://localhost:8000/gfg/zerotologic
-```
+`http://localhost:8000/gfg/zerotologic`
 
 **Response:**
 ```json
 {
   "username": "zerotologic",
-  "name": "User Name",
-  "overall_coding_score": 2,
-  "total_problems_solved": 1,
-  "monthly_score": 0,
-  "institute_rank": 987,
-  "profile_image_url": "...",
-  "created_date": "2025-05-25 15:00:27"
+  "profile_url": "https://www.geeksforgeeks.org/profile/zerotologic",
+  "institute_rank": "5215",
+  "coding_score": 11,
+  "total_problems_solved": 5,
+  "monthly_coding_score": 0,
+  "articles_published": 0,
+  "problems_solved_breakdown": {
+    "school": 0,
+    "basic": 3,
+    "easy": 0,
+    "medium": 2,
+    "hard": 0
+  }
 }
 ```
-
-## Project Structure
-
-```
-gfg api/
-├── main.py              # FastAPI application
-├── scraper.py           # Scraping logic (Next.js support)
-├── requirements.txt     # Dependencies
-├── vercel.json          # Deployment config
-└── README.md           # Documentation
-```
-
-## Troubleshooting
-
-**"Profile not found" error:**
-1. Verify the username is correct and public on GeeksforGeeks.
-2. Check if the profile URL is accessible in a browser.
-
-
